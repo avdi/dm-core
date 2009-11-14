@@ -495,7 +495,7 @@ module DataMapper
             model     = discriminator && record[discriminator] || self
             model_key = model.key(repository_name)
 
-            resource = if model_key.valid?(key_values = record.values_at(*model_key))
+            resource = if model_key.valid?(key_values = field_map.values_at(*model_key))
               identity_map = repository.identity_map(model)
               identity_map[key_values]
             end
